@@ -51,7 +51,7 @@ const Render = () => {
 
     return (
         <div style={{ position: "relative", background: 'rgba(0, 0, 0, 1)' }}>
-            <canvas ref={canvasRef} style={{ width: "100%", height: "100%", outline: "none", backgroundColor: "#fff" }} />
+            <canvas ref={canvasRef} style={{ width: "100vw", height: "100vh", outline: "none", backgroundColor: "#fff" }} />
         </div>
     );
 };
