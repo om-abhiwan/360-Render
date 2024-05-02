@@ -30,7 +30,7 @@ const Render = () => {
     const createScene = (engine, canvas) => {
         const scene = new BABYLON.Scene(engine);
 
-        var camera = new BABYLON.ArcRotateCamera("Camera", -Math.PI / 2, Math.PI / 2, 5, BABYLON.Vector3.Zero(), scene);
+        var camera = new BABYLON.ArcRotateCamera("Camera", -(Math.PI / 2) + 2, Math.PI / 2, 5, BABYLON.Vector3.Zero(), scene);
         camera.attachControl(canvas, true);
         camera.inputs.attached.mousewheel.detachControl(canvas);
 
