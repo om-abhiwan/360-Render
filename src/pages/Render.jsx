@@ -32,7 +32,25 @@ const Render = () => {
 
         var camera = new BABYLON.ArcRotateCamera("Camera", -(Math.PI / 2) + 2, Math.PI / 2, 5, BABYLON.Vector3.Zero(), scene);
         camera.attachControl(canvas, true);
-        camera.inputs.attached.mousewheel.detachControl(canvas);
+        // camera.inputs.attached.mousewheel.detachControl(canvas);
+
+        // Set up zoom functionality
+        const zoomSpeed = 0.1;
+        const zoomIn = (delta) => {
+            camera.position.z -= delta * zoomSpeed;
+        };
+        const zoomOut = (delta) => {
+            camera.position.z += delta * zoomSpeed;
+        };
+
+        // Add event listeners for zooming
+        window.addEventListener('keydown', (event) => {
+            if (event.key === 'ArrowUp') {
+                zoomIn(event.deltaY);
+            } else if (event.key === 'ArrowDown') {
+                zoomOut(event.deltaY);
+            }
+        });
 
         var dome = new BABYLON.PhotoDome(
             "",
@@ -48,6 +66,11 @@ const Render = () => {
 
         return scene;
     };
+
+    // to rotate ourself
+    // scene.beforeRender = function () {
+    //     camera.alpha += .001;
+    // }
 
     return (
         <div style={{ position: "relative", background: 'rgba(0, 0, 0, 1)' }}>
